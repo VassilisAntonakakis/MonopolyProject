@@ -9,9 +9,9 @@ public class CardCell extends Cell{
 		this.setId(id);
 	}
 	
-	public void drawCard() {
+	/*public void drawCard() {
 		super.drawCard(this.getType());
-	}
+	}*/
 
 	public int getType() {
 		return type;

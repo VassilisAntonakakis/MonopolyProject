@@ -1,6 +1,6 @@
 package monopoly;
 
-public abstract class Cell extends GameMaster {
+public abstract class Cell {
 	private String title;
 	private int id;
 

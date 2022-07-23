@@ -6,8 +6,9 @@ public class RailroadCell extends Cell{
 	private String owner;
 	private int baseRent; 
 	
-	public RailroadCell(String title) {
+	public RailroadCell(String title, int id) {
 		this.setTitle(title);
+		this.setId(id);
 		this.setValue(200);
 		this.setMortgageValue(100);
 		this.setOwner("");

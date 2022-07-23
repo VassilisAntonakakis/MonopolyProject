@@ -25,7 +25,7 @@ public class Board {
 		System.out.println("Done init board");
 	}
 
-	private void initBoard(CardCell cards[], PropertyCell properties[], RailroadCell stations[], MiscCell misc[]) {
+	public void initBoard(CardCell cards[], PropertyCell properties[], RailroadCell stations[], MiscCell misc[]) {
 		
 		File propertiesFile = new File("C:\\Users\\Vassilis Antonakakis\\eclipse-workspace\\monopoly\\src\\monopoly\\propertyCards.txt");
 		File stationsFile = new File("C:\\Users\\Vassilis Antonakakis\\eclipse-workspace\\monopoly\\src\\monopoly\\railwayStations.txt");
@@ -38,16 +38,14 @@ public class Board {
 			int stationCount = 0, propertyCount = 0, miscCount = 0, cardCount = 0, utilityCount = 0;
 			Integer index = 0;
 			
-			String name = stationsInput.nextLine();
+			/*String name = stationsInput.nextLine();
 			System.out.println("Station name: " + name);
-			stations[stationCount] = new RailroadCell(name);
+			stations[stationCount] = new RailroadCell(name, 5);
 			stationCount++;
-			System.out.printf("Cell %d added station %s\n", 5, name);
-		
-			/*while(index < 40) {
-				
-				System.out.println(index);
-				
+			System.out.printf("Cell %d added station %s\n", 5, name);*/
+			
+			while(index < 40) {
+
 				if(index.equals(2) || index.equals(18) || index.equals(34) ) {
 					cards[cardCount] = new CardCell("Απόφαση", 0, index);
 					index++;
@@ -115,7 +113,7 @@ public class Board {
 				
 				if(index.equals(5) || index.equals(15) || index.equals(25) || index.equals(35)) {
 					String name = stationsInput.nextLine();
-					stations[stationCount] = new RailroadCell(name);
+					stations[stationCount] = new RailroadCell(name, index);
 					stationCount++;
 					System.out.printf("Cell %d added station %s\n", index, name);
 					index++;
@@ -151,7 +149,10 @@ public class Board {
 				propertyCount++;
 				System.out.printf("Cell %d added %s Property count: %d\n", index, tokens.get(1), propertyCount);
 				index++;
-			}*/
+			}
+			
+			stationsInput.close();
+			propertyInput.close();
 			
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();

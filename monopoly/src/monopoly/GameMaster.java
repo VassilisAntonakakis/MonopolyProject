@@ -2,11 +2,12 @@ package monopoly;
 
 public class GameMaster {
 	
-	Board b1 = new Board();
-	Cards deck = new Cards();
+	Board b1;
+	Cards deck;
 	
 	public GameMaster() {
-		
+		b1 = new Board();
+		deck = new Cards();
 	}
 	
 	public void drawCard(int type) {
