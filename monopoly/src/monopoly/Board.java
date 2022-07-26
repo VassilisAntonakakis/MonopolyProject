@@ -22,13 +22,33 @@ public class Board {
 		misc = new MiscCell[6];
 		utilities = new UtilityCell[2];
 		this.initBoard(cards, properties, stations, misc);
-		System.out.println("Done init board");
+		System.out.println("Board init done");
+	}
+	
+	private CardCell[] getCardCells() {
+		return this.cards;
+	}
+	
+	private PropertyCell[] getProperties() {
+		return this.properties;
+	}
+	
+	private RailroadCell[] getRailroadCells() {
+		return this.stations;
+	}
+	
+	private UtilityCell[] getUtilityCells() {
+		return this.utilities;
+	}
+	
+	private MiscCell[] getMiscCells() {
+		return this.misc;
 	}
 
 	public void initBoard(CardCell cards[], PropertyCell properties[], RailroadCell stations[], MiscCell misc[]) {
 		
-		File propertiesFile = new File("C:\\Users\\Vassilis Antonakakis\\eclipse-workspace\\monopoly\\src\\monopoly\\propertyCards.txt");
-		File stationsFile = new File("C:\\Users\\Vassilis Antonakakis\\eclipse-workspace\\monopoly\\src\\monopoly\\railwayStations.txt");
+		File propertiesFile = new File("src\\monopoly\\propertyCards.txt");
+		File stationsFile = new File("src\\monopoly\\railwayStations.txt");
 		List<String> tokens = new ArrayList<>();
 		
 		try {
@@ -38,26 +58,20 @@ public class Board {
 			int stationCount = 0, propertyCount = 0, miscCount = 0, cardCount = 0, utilityCount = 0;
 			Integer index = 0;
 			
-			/*String name = stationsInput.nextLine();
-			System.out.println("Station name: " + name);
-			stations[stationCount] = new RailroadCell(name, 5);
-			stationCount++;
-			System.out.printf("Cell %d added station %s\n", 5, name);*/
-			
 			while(index < 40) {
 
 				if(index.equals(2) || index.equals(18) || index.equals(34) ) {
 					cards[cardCount] = new CardCell("Απόφαση", 0, index);
 					index++;
 					cardCount++;
-					System.out.printf("Cell %d added %s\n", index, "Απόφαση");			
+					//System.out.printf("Cell %d added %s\n", index, "Απόφαση");			
 					continue;
 				}
 				
 				if(index.equals(7) || index.equals(22) || index.equals(36) ){
 					cards[cardCount] = new CardCell("Εντολή", 1, index);
 					cardCount++;
-					System.out.printf("Cell %d added %s\n", index, "Εντολή");
+					//System.out.printf("Cell %d added %s\n", index, "Εντολή");
 					index++;
 					
 				}
@@ -65,7 +79,7 @@ public class Board {
 				if(index.equals(4)){
 					misc[miscCount] = new MiscCell("Φόρος Εισοδήματος. Πλήρωσε 200", index);
 					miscCount++;
-					System.out.printf("Cell %d added %s\n", index, "Φόρος Εισοδήματος. Πλήρωσε 200");
+					//System.out.printf("Cell %d added %s\n", index, "Φόρος Εισοδήματος. Πλήρωσε 200");
 					index++;
 					
 				}
@@ -73,7 +87,7 @@ public class Board {
 				if(index.equals(38)) {
 					misc[miscCount] = new MiscCell("Φόρος Πολυτελείας. Πλήρωσε 100", index);
 					miscCount++;
-					System.out.printf("Cell %d added %s\n", index, "Φόρος Πολυτελείας. Πλήρωσε 100");
+					//System.out.printf("Cell %d added %s\n", index, "Φόρος Πολυτελείας. Πλήρωσε 100");
 					index++;
 					
 				}
@@ -81,7 +95,7 @@ public class Board {
 				if(index.equals(10)) {
 					misc[miscCount] = new MiscCell("Φυλακή", index);
 					miscCount++;
-					System.out.printf("Cell %d added %s\n", index, "Φυλακή");
+					//System.out.printf("Cell %d added %s\n", index, "Φυλακή");
 					index++;
 					
 				}
@@ -89,7 +103,7 @@ public class Board {
 				if(index.equals(30)) {
 					misc[miscCount] = new MiscCell("Πήγαινε στην φυλακή", index);
 					miscCount++;
-					System.out.printf("Cell %d added %s\n", index, "Πήγαινε στην φυλακή");
+					//System.out.printf("Cell %d added %s\n", index, "Πήγαινε στην φυλακή");
 					index++;
 					continue;
 				}
@@ -97,16 +111,15 @@ public class Board {
 				if(index.equals(20)) {
 					misc[miscCount] = new MiscCell("Ελεύθερη Στάθμευση", index);
 					miscCount++;
-					System.out.printf("Cell %d added %s\n", index, "Ελεύθερη Στάθμευση");
+					//System.out.printf("Cell %d added %s\n", index, "Ελεύθερη Στάθμευση");
 					index++;
 					continue;
 				}
 				
 				if(index.equals(0)) {
-					System.out.println("Creating go");
 					misc[miscCount] = new MiscCell("Αφετηρία", index);
 					miscCount++;
-					System.out.printf("Cell %d added %s\n", index, "Αφετηρία");
+					//System.out.printf("Cell %d added %s\n", index, "Αφετηρία");
 					index++;
 					continue;
 				}
@@ -115,24 +128,24 @@ public class Board {
 					String name = stationsInput.nextLine();
 					stations[stationCount] = new RailroadCell(name, index);
 					stationCount++;
-					System.out.printf("Cell %d added station %s\n", index, name);
+					//System.out.printf("Cell %d added station %s\n", index, name);
 					index++;
 					continue;
 				}
 				
 				if(index.equals(12)) {
-					utilities[utilityCount] = new UtilityCell("Υπηρεσία Ηλεκτρισμού", 150, 75);
+					utilities[utilityCount] = new UtilityCell("Υπηρεσία Ηλεκτρισμού", 150, 75, index);
 					utilityCount++;
 					index++;
-					System.out.printf("Cell %d added utility %s\n", index-1, utilities[utilityCount-1]);
+					//System.out.printf("Cell %d added utility %s\n", index-1, utilities[utilityCount-1].getTitle());
 					continue;
 				}
 
-				if(index.equals(28)) {
-					utilities[utilityCount] = new UtilityCell("Υπηρεσία Ύδρευσης", 150, 75);
+				if(index.equals(27)) {
+					utilities[utilityCount] = new UtilityCell("Υπηρεσία Ύδρευσης", 150, 75, index);
 					utilityCount++;
 					index++;
-					System.out.printf("Cell %d added utility %s\n", index-1, utilities[utilityCount-1]);
+					//System.out.printf("Cell %d added utility %s\n", index-1, utilities[utilityCount-1].getTitle());
 					continue;
 				}
 				tokens = getTokens(propertyInput.nextLine());
@@ -147,7 +160,7 @@ public class Board {
 						);
 
 				propertyCount++;
-				System.out.printf("Cell %d added %s Property count: %d\n", index, tokens.get(1), propertyCount);
+				//System.out.printf("Cell %d added %s Property count: %d\n", index, tokens.get(1), propertyCount);
 				index++;
 			}
 			
@@ -168,5 +181,37 @@ public class Board {
 	        tokens.add(tokenizer.nextToken());
 	    }
 	    return tokens;
+	}
+	
+	public String getTitle(int id) {
+		int index=0;
+		//System.out.println("Inputed id: " + id);
+		for(index=0; index<this.getProperties().length; index++) {
+			
+			if(id == this.getProperties()[index].getId()) return this.getProperties()[index].getTitle();
+		}
+		
+		for(index=0; index<this.getMiscCells().length; index++) {
+			
+			if(id == this.getMiscCells()[index].getId()) return this.getMiscCells()[index].getTitle();
+		}
+		
+		for(index=0; index<this.getCardCells().length; index++) {
+			
+			if(id == this.getCardCells()[index].getId()) return this.getCardCells()[index].getTitle();
+		}
+		
+		for(index=0; index<this.getRailroadCells().length; index++) {
+			
+			if(id == this.getRailroadCells()[index].getId()) return this.getRailroadCells()[index].getTitle();
+		}
+		
+		for(index=0; index<this.getUtilityCells().length; index++) {
+			
+			if(id == this.getUtilityCells()[index].getId()) return this.getUtilityCells()[index].getTitle();
+		}
+		
+		return "Not found";
+		
 	}
 }

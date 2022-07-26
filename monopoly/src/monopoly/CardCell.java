@@ -8,10 +8,6 @@ public class CardCell extends Cell{
 		this.setType(type);
 		this.setId(id);
 	}
-	
-	/*public void drawCard() {
-		super.drawCard(this.getType());
-	}*/
 
 	public int getType() {
 		return type;

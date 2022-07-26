@@ -4,10 +4,11 @@ public class UtilityCell extends Cell{
 	private int value;
 	private int mortgageValue;
 	
-	public UtilityCell(String title, int value, int mortgageValue){
+	public UtilityCell(String title, int value, int mortgageValue, int id){
 		this.setTitle(title);
 		this.setValue(value);
 		this.setMortgageValue(mortgageValue);
+		this.setId(id);
 	}
 
 	public int getValue() {
