@@ -26,9 +26,9 @@ public class Cards {
 			Scanner chanceInput = new Scanner(chanceFile);
 			Scanner commChestInput = new Scanner(commChestFile);
 			
-			for(int index=0; index<35; index++) {
+			for(int index=0; index<32; index++) {
 				
-				if(index <= 18) {
+				if(index <= 15) {
 					commChest[commCount] = commChestInput.nextLine();
 					commCount++;
 					//System.out.printf("Comm Chest %d card added %s\n", commCount-1, commChest[commCount-1]);
@@ -41,27 +41,28 @@ public class Cards {
 			}
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public void getRandomCard(int type) {
+	public String getRandomCard(int type) {
 		//0 commChest - 1 chance
 		int card = -1, min = 1, max, range;
 		
 		if(type == 0) {
-			max = 19;
+			max = 15;
 			range = max - min + 1;
 			card = (int)(Math.random() * range) + min;
-			System.out.println(commChest[card]);
+			return commChest[card];
 		}
 		
 		if(type == 1) {
-			max = 24;
+			max = 15;
 			range = max - min + 1;
 			card = (int)(Math.random() * range) + min;
-			System.out.println(chance[card]);
+			return chance[card];
 		}
+		
+		return null;
 	}
 }

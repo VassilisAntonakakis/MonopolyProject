@@ -4,7 +4,7 @@ public class PropertyCell extends Cell{
 	private String colour;
 	private int value;
 	private int mortgageValue;
-	private String owner;
+	private int owner;
 	private int houseNo;
 	private int baseRent; 
 	private int activeRent;
@@ -14,7 +14,7 @@ public class PropertyCell extends Cell{
 		this.setTitle(title);
 		this.setValue(value);
 		this.setMortgageValue(mortgageValue);
-		this.setOwner("");
+		this.setOwner(-1);
 		this.setBaseRent(baseRent);
 		this.setHouseNo(0);
 		this.setActiveRent();
@@ -23,7 +23,7 @@ public class PropertyCell extends Cell{
 		this.setBuildingCost(buildingCost);
 	}
 	
-	public double getValue() {
+	public int getValue() {
 		return value;
 	}
 
@@ -36,10 +36,10 @@ public class PropertyCell extends Cell{
 	public void setMortgageValue(int mortgageValue) {
 		this.mortgageValue = mortgageValue;
 	}
-	public String getOwner() {
+	public int getOwner() {
 		return owner;
 	}
-	public void setOwner(String owner) {
+	public void setOwner(int owner) {
 		this.owner = owner;
 	}
 	public int getHouseNo() {

@@ -25,24 +25,56 @@ public class Board {
 		System.out.println("Board init done");
 	}
 	
-	private CardCell[] getCardCells() {
+	public CardCell[] getCardCells() {
 		return this.cards;
 	}
 	
-	private PropertyCell[] getProperties() {
+	public PropertyCell[] getProperties() {
 		return this.properties;
 	}
 	
-	private RailroadCell[] getRailroadCells() {
+	public RailroadCell[] getRailroadCells() {
 		return this.stations;
 	}
 	
-	private UtilityCell[] getUtilityCells() {
+	public UtilityCell[] getUtilityCells() {
 		return this.utilities;
 	}
 	
-	private MiscCell[] getMiscCells() {
+	public MiscCell[] getMiscCells() {
 		return this.misc;
+	}
+	
+	public String getCellType(int id) {
+		
+		int index; 
+		
+		for(index=0; index<this.getProperties().length; index++) {
+			
+			if(id == this.getProperties()[index].getId()) return this.getProperties()[index].getClass().getName();
+		}
+		
+		for(index=0; index<this.getMiscCells().length; index++) {
+			
+			if(id == this.getMiscCells()[index].getId()) return this.getMiscCells()[index].getClass().getName();
+		}
+		
+		for(index=0; index<this.getCardCells().length; index++) {
+			
+			if(id == this.getCardCells()[index].getId()) return this.getCardCells()[index].getClass().getName();
+		}
+		
+		for(index=0; index<this.getRailroadCells().length; index++) {
+			
+			if(id == this.getRailroadCells()[index].getId()) return this.getRailroadCells()[index].getClass().getName();
+		}
+		
+		for(index=0; index<this.getUtilityCells().length; index++) {
+			
+			if(id == this.getUtilityCells()[index].getId()) return this.getUtilityCells()[index].getClass().getName();
+		}
+		
+		return "Not found";
 	}
 
 	public void initBoard(CardCell cards[], PropertyCell properties[], RailroadCell stations[], MiscCell misc[]) {

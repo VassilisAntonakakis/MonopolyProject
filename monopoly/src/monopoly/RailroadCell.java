@@ -3,7 +3,7 @@ package monopoly;
 public class RailroadCell extends Cell{
 	private int value;
 	private int mortgageValue;
-	private String owner;
+	private int owner;
 	private int baseRent; 
 	
 	public RailroadCell(String title, int id) {
@@ -11,11 +11,11 @@ public class RailroadCell extends Cell{
 		this.setId(id);
 		this.setValue(200);
 		this.setMortgageValue(100);
-		this.setOwner("");
+		this.setOwner(-1);
 		this.setBaseRent(50);
 	}
 	
-	public double getValue() {
+	public int getValue() {
 		return value;
 	}
 
@@ -31,11 +31,11 @@ public class RailroadCell extends Cell{
 		this.mortgageValue = mortgageValue;
 	}
 	
-	public String getOwner() {
+	public int getOwner() {
 		return owner;
 	}
 	
-	public void setOwner(String owner) {
+	public void setOwner(int owner) {
 		this.owner = owner;
 	}
 	
