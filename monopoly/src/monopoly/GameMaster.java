@@ -79,7 +79,7 @@ public class GameMaster {
 		int activePlayer = 0, dice1, dice2, turn = 0, doubleDice=0;
 		System.out.printf("No of players is %d\n", this.getPlayerNo());
 		
-		while(turn <= 400) {
+		while(turn <= 400 && allBankrupt() == false) {
 			System.out.printf("\nIt's players %d (%s) turn\n", activePlayer, this.getPlayerList()[activePlayer].getName());
 			do {
 				
@@ -128,6 +128,14 @@ public class GameMaster {
 		}
 	}
 	
+	private boolean allBankrupt() {
+		for(int index=0; index<this.getPlayerNo(); index++) {
+			if(this.getStateHolder().isBankrupt(index) == false) return false;
+		}
+		System.out.println("All players are bankrupt!");
+		return true;
+	}
+
 	private void goToJail(int activePlayer) {
 		System.out.printf("%s goes to Jail\n", this.getPlayerList()[activePlayer].getName());
 		this.getStateHolder().setJailStatus(activePlayer);

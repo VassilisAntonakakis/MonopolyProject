@@ -60,8 +60,9 @@ public class StateHolder {
 				this.setBunkruptPlayer(activePlayer);
 			}
 		}
-		this.getStates()[activePlayer][0] += transaction;
-		
+		else {
+			this.getStates()[activePlayer][0] += transaction;
+		}
 	}
 	
 	public int getPos(int activePlayer) {
